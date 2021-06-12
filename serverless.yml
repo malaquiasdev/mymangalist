@@ -24,25 +24,11 @@ provider:
         - cloudwatch:*
         - dynamodb:*
       Resource: "*"
-#  environment:
-#    variable1: value1
+  environment:
+    DYNAMODB_MANGAS_TABLE_NAME: ${self:service}_${self:provider.stage}_mangas
 
 functions:
-  hello:
-    handler: handler.hello
-    events:
-      - httpApi:
-          path: hello
-          method: get
+  - ${file(src/functions/create-new-manga/function.yml)}
 
-# you can add CloudFormation resource templates here
 #resources:
-#  Resources:
-#    NewResource:
-#      Type: AWS::S3::Bucket
-#      Properties:
-#        BucketName: my-new-bucket
-#  Outputs:
-#     NewOutput:
-#       Description: "Description for the output"
-#       Value: "Some output value"
+#  - ${file(resources/dynamodb/manga-table.yml)}

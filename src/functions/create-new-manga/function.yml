@@ -1,0 +1,8 @@
+createNewMangaInMyList:
+  handler: src/functions/create-new-manga/main.handler
+  events:
+    - httpApi:
+        path: /mymangalist/user/mangas
+        method: post
+        cors: true
+        integration: lambda
