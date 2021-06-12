@@ -18,7 +18,9 @@ def handler(event, context):
                                                  request_body.get('mangaStatus'), request_body.get('numChaptersRead'),
                                                  request_body.get('averageScore'), request_body.get('scores'),
                                                  request_body.get('externalLinks'))
-    except Exception as error:
+    except ValueError as error:
         return make_response(context.aws_request_id, 0, 409, None, "CONFLICT_ERROR", str(error))
+    except Exception as error:
+        return make_response(context.aws_request_id, 0, 500, None, "INTERNAL_SERVER_ERROR", str(error))
     else:
         return make_response(context.aws_request_id, 0, 201, request_body)

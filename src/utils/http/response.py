@@ -20,6 +20,7 @@ def _make_success_body(request_id: str, result: object) -> object:
 
 
 def _make_error_body(request_id: str, error_code: str, error_message: str) -> object:
+    print(f"request_id: {request_id} | error_code: {error_code} | error_message: {error_message}")
     return {
         "error": {
             "code": error_code,

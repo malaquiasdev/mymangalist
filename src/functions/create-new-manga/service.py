@@ -9,6 +9,6 @@ def create_new_manga_if_not_exist_in_my_list(table_name: str, slug: str, title: 
         dynamodb.create_new_manga(table_name, slug, title, status, manga_status, num_chapters_read, average_score,
                                   scores, external_links)
     else:
-        raise Exception(f"slug: {slug}, exist in your list")
+        raise ValueError(f"slug: {slug}, exist in your list")
 
     return True

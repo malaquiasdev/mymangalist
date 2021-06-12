@@ -27,10 +27,9 @@ def find_manga_by_slug(table_name: str, slug: str) -> any:
     try:
         response = table.query(KeyConditionExpression=Key('slug').eq(slug))
     except ClientError as error:
-        print(error.response['Error']['Message'])
+        print(error)
         raise
     else:
-        print(response)
         return response['Items']
 
 
@@ -39,8 +38,7 @@ def find_reading_mangas(table_name: str) -> typing.List[any]:
     try:
         response = table.scan(FilterExpression=Attr('status').contains("reading"))
     except ClientError as error:
-        print(error.response['Error']['Message'])
+        print(error)
         raise
     else:
-        print(response)
         return response['Items']
