@@ -6,6 +6,10 @@ plugins:
   - serverless-python-requirements
   - serverless-offline
 
+custom:
+  pythonRequirements: # DO NOT REMOVE THIS, THIS HELP US TO AVOID PYTHON VERSION ERRORS
+    pythonBin: python3
+
 provider:
   name: aws
   runtime: python3.8
@@ -30,5 +34,5 @@ provider:
 functions:
   - ${file(src/functions/create-new-manga/function.yml)}
 
-#resources:
-#  - ${file(resources/dynamodb/manga-table.yml)}
+resources:
+  - ${file(resources/api-gateway.yml)}
