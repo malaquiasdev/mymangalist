@@ -16,7 +16,6 @@ provider:
   lambdaHashingVersion: 20201221
   stage: ${opt:stage, 'dev'}
   region: us-east-1
-  timeout: 90
   logRetentionInDays: 5
   deploymentBucket: ${self:service}-deployment
   tags:
