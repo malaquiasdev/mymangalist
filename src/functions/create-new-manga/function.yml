@@ -5,4 +5,3 @@ createNewMangaInMyList:
         path: /mymangalist/user/mangas
         method: post
         cors: true
-        integration: lambda

@@ -9,8 +9,7 @@ DYNAMODB_MANGAS_TABLE_NAME = os.getenv('DYNAMODB_MANGAS_TABLE_NAME')
 def handler(event, context):
     print(f'DYNAMODB_MANGAS_TABLE_NAME: {DYNAMODB_MANGAS_TABLE_NAME}')
     print(f'event: {event}')
-
-    request_body = {**event["body"]}
+    request_body = json.loads(event['body'])
 
     exist_in_my_list = dynamodb.find_manga_by_slug(DYNAMODB_MANGAS_TABLE_NAME, request_body.get('slug'))
 
@@ -39,3 +38,4 @@ def handler(event, context):
         "statusCode": 200,
         "body": json.dumps(result)
     }
+
