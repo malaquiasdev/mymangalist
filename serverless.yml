@@ -1,0 +1,48 @@
+service: mymangalist
+frameworkVersion: '2'
+useDotenv: true
+
+plugins:
+  - serverless-python-requirements
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: python3.8
+  lambdaHashingVersion: 20201221
+  stage: ${opt:stage, 'dev'}
+  region: us-east-1
+  timeout: 90
+  logRetentionInDays: 5
+  deploymentBucket: ${self:service}-deployment
+  tags:
+    project: ${self:service}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:*
+        - cloudwatch:*
+        - dynamodb:*
+      Resource: "*"
+#  environment:
+#    variable1: value1
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - httpApi:
+          path: hello
+          method: get
+
+# you can add CloudFormation resource templates here
+#resources:
+#  Resources:
+#    NewResource:
+#      Type: AWS::S3::Bucket
+#      Properties:
+#        BucketName: my-new-bucket
+#  Outputs:
+#     NewOutput:
+#       Description: "Description for the output"
+#       Value: "Some output value"
