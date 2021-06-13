@@ -17,7 +17,7 @@ provider:
   stage: ${opt:stage, 'dev'}
   region: us-east-1
   logRetentionInDays: 5
-  deploymentBucket: ${self:service}-deployment
+  deploymentBucket: my-serverless-bucket-deployment
   tags:
     project: ${self:service}
   iamRoleStatements:
