@@ -8,12 +8,11 @@
     "slug": {
         "type": "string",
         "pattern": "^[a-zA-Z0-9]+$",
-        "minLength": 10,
+        "minLength": 5,
         "maxLength": 50
     },
     "title": {
-      "type": "string",
-      "pattern": "^[a-zA-Z0-9]+$"
+      "type": "string"
     },
     "status": {
       "type": "string",
@@ -31,9 +30,11 @@
       "minItems": 1,
       "uniqueItems": true,
       "items": {
-        "type": "integer",
-        "minimum": 0,
-        "maximum": 10
+        "type": "object",
+        "properties": {
+          "chapterNumber": { "type": "number"},
+          "score": { "type": "number",  "minimum": 0, "maximum": 10 }
+        }
       }
     }
   }
