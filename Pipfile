@@ -8,6 +8,8 @@ boto3 = "*"
 botocore = "*"
 
 [dev-packages]
+pylint = "*"
+moto = "*"
 
 [requires]
 python_version = "3.8"
