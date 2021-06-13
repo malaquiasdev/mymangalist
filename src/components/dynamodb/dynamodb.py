@@ -15,7 +15,7 @@ def create_new_manga(table_name: str, slug: str, title: str, status: str, manga_
         'status': status,
         'manga_status': manga_status,
         'num_chapters_read': num_chapters_read,
-       # 'average_score': average_score, //TODO THIS MUST BE CALCULATED AND SAVED BASED IN THE SCORE VALUES
+        # 'average_score': average_score, //TODO THIS MUST BE CALCULATED AND SAVED BASED IN THE SCORE VALUES
         'scores': scores,
         'external_links': external_links
     })
@@ -36,7 +36,8 @@ def find_manga_by_slug(table_name: str, slug: str) -> any:
 def find_reading_mangas(table_name: str) -> typing.List[any]:
     table = dynamodb.Table(table_name)
     try:
-        response = table.scan(FilterExpression=Attr('status').contains("reading"))
+        response = table.scan(FilterExpression=Attr(
+            'status').contains("reading"))
     except ClientError as error:
         print(error)
         raise

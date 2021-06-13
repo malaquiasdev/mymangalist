@@ -1,5 +1,5 @@
 import json
-from .headers import apply_cache_control_headers, get_cors_headers
+from src.utils.http.headers import apply_cache_control_headers, get_cors_headers
 
 
 def _parse_to_aws_model(status_code: int, headers: object, body: object):
@@ -20,7 +20,8 @@ def _make_success_body(request_id: str, result: object) -> object:
 
 
 def _make_error_body(request_id: str, error_code: str, error_message: str) -> object:
-    print(f"request_id: {request_id} | error_code: {error_code} | error_message: {error_message}")
+    print(
+        f"request_id: {request_id} | error_code: {error_code} | error_message: {error_message}")
     return {
         "error": {
             "code": error_code,

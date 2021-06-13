@@ -33,7 +33,7 @@ provider:
     DYNAMODB_MANGAS_TABLE_NAME: ${self:service}_${self:provider.stage}_mangas
 
 functions:
-  - ${file(src/functions/create-new-manga/function.yml)}
+  - ${file(src/functions/createNewManga/function.yml)}
 
 resources:
   - ${file(resources/api-gateway.yml)}
