@@ -20,13 +20,15 @@ provider:
   deploymentBucket: my-serverless-bucket-deployment
   tags:
     project: ${self:service}
-  iamRoleStatements:
-    - Effect: Allow
-      Action:
-        - s3:*
-        - cloudwatch:*
-        - dynamodb:*
-      Resource: "*"
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - s3:*
+            - cloudwatch:*
+            - dynamodb:*
+          Resource: "*"
   environment:
     DYNAMODB_MANGAS_TABLE_NAME: ${self:service}_${self:provider.stage}_mangas
 
