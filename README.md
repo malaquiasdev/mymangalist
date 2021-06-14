@@ -29,6 +29,12 @@ Before you begin, ensure you have met the following requirements:
     ```
     To learn more about the capabilities of serverless-offline, please refer to its [GitHub repository](https://github.com/dherault/serverless-offline).
 
+1.  **Testing.**
+    We are using the python unittest to run our suites.
+    ```shell
+    python -m unittest discover test
+    ```
+    
 1.  **Bundling dependencies.**
     We are using a *Pipfile* file and the *serverless-python-requirements* plugin. 
     Every lib installed here will be automatically injected to Lambda package during build process.
