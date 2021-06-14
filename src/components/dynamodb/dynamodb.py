@@ -1,5 +1,6 @@
 import typing
 import boto3
+from decimal import *
 from boto3.dynamodb.conditions import Attr, Key
 from botocore.exceptions import ClientError
 
@@ -15,7 +16,7 @@ def create_new_manga(table_name: str, slug: str, title: str, status: str, manga_
         'status': status,
         'manga_status': manga_status,
         'num_chapters_read': num_chapters_read,
-        # 'average_score': average_score, //TODO THIS MUST BE CALCULATED AND SAVED BASED IN THE SCORE VALUES
+        'average_score': Decimal(average_score),
         'scores': scores,
         'external_links': external_links
     })
