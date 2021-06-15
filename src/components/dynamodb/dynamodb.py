@@ -34,11 +34,11 @@ def find_manga_by_slug(table_name: str, slug: str) -> any:
         return response['Items']
 
 
-def find_reading_mangas(table_name: str) -> typing.List[any]:
+def find_mangas_by_status(table_name: str, status: str) -> typing.List[any]:
     table = dynamodb.Table(table_name)
     try:
         response = table.scan(FilterExpression=Attr(
-            'status').contains("reading"))
+            'status').contains(status))
     except ClientError as error:
         print(error)
         raise
