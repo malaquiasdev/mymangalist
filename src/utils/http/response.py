@@ -1,4 +1,4 @@
-import json
+import simplejson as json
 from src.utils.http.headers import apply_cache_control_headers, get_cors_headers
 
 
