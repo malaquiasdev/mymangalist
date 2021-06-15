@@ -1,0 +1,7 @@
+listMyMangas:
+  handler: src/functions/listMyMangas/mian.handler
+  events:
+    - http:
+        path: /mymangalist/user/mangas
+        method: get
+        cors: true
