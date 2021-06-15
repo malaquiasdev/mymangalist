@@ -32,8 +32,12 @@ provider:
   environment:
     DYNAMODB_MANGAS_TABLE_NAME: ${self:service}_${self:provider.stage}_mangas
 
+package:
+  individually: true
+
 functions:
   - ${file(src/functions/createNewManga/function.yml)}
+  - ${file(src/functions/listMyMangas/function.yml)}
 
 resources:
   - ${file(resources/api-gateway.yml)}
