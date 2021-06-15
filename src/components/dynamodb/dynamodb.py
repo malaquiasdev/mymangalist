@@ -44,3 +44,18 @@ def find_mangas_by_status(table_name: str, status: str) -> typing.List[any]:
         raise
     else:
         return response['Items']
+
+
+def find_all_mangas(table_name: str) -> any:
+    table = dynamodb.Table(table_name)
+    try:
+        response = table.scan()
+        data = response['Items']
+        while 'LastEvaluatedKey' in response:
+            response = table.scan(ExclusiveStartKey=response['LastEvaluatedKey'])
+            data.extend(response['Items'])
+    except ClientError as error:
+        print(error)
+        raise
+    finally:
+        return data
