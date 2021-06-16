@@ -31,7 +31,10 @@ def find_manga_by_slug(table_name: str, slug: str) -> any:
         print(error)
         raise
     else:
-        return response['Items'][0]
+        if response['Count'] > 0:
+            return response['Items'][0]
+        else:
+            return None
 
 
 def find_mangas_by_status(table_name: str, status: str) -> typing.List[any]:
