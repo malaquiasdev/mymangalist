@@ -62,3 +62,11 @@ def find_all_mangas(table_name: str) -> any:
         raise
     finally:
         return data
+
+
+def update_item(table_name: str, item: dict) -> bool:
+    table = dynamodb.Table(table_name)
+    table.put_item(Item={
+        **item
+    })
+    return True

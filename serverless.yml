@@ -39,6 +39,7 @@ functions:
   - ${file(src/functions/createNewManga/function.yml)}
   - ${file(src/functions/listMyMangas/function.yml)}
   - ${file(src/functions/listMyMangasScores/function.yml)}
+  - ${file(src/functions/addNewScore/function.yml)}
 
 resources:
   - ${file(resources/api-gateway.yml)}
