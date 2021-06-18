@@ -1,5 +1,5 @@
 listMyMangas:
-  handler: src/functions/listMyMangas/mian.handler
+  handler: src/functions/listMyMangas/main.handler
   events:
     - http:
         path: /mymangalist/user/mangas
