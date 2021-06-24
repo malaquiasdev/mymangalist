@@ -5,6 +5,7 @@ addNewScore:
         path: /mymangalist/user/mangas/{slug}/scores
         method: patch
         cors: true
+        private: ${env:PRIVATE_ENDPOINT}
         request:
           schemas:
             application/json: ${file(src/functions/addNewScore/add_score_request.json)}
