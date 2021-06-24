@@ -1,7 +1,0 @@
-listMyMangas:
-  handler: src/functions/listMyMangas/main.handler
-  events:
-    - http:
-        path: /mymangalist/user/mangas
-        method: get
-        cors: true

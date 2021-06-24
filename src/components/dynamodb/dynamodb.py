@@ -32,11 +32,12 @@ def find_item_by_slug(table_name: str, slug: str) -> any:
             return None
 
 
-def find_items_by_status(table_name: str, status: str) -> typing.List[any]:
+def find_items_by_status_and_type(table_name: str, status: str, type: str) -> typing.List[any]:
     table = dynamodb.Table(table_name)
     try:
         response = table.scan(FilterExpression=Attr(
-            'status').contains(status))
+            'status').contains(status) &
+            Attr('type').contains(type))
     except ClientError as error:
         print(error)
         raise
@@ -44,7 +45,7 @@ def find_items_by_status(table_name: str, status: str) -> typing.List[any]:
         return response['Items']
 
 
-def find_all_mangas(table_name: str) -> any:
+def find_all_items(table_name: str) -> any:
     table = dynamodb.Table(table_name)
     try:
         response = table.scan()

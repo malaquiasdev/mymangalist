@@ -1,6 +1,6 @@
 import os
 
-from src.functions.listMyMangas.service import list_my_mangas
+from src.functions.listmyscores.service import list_my_scores
 from src.utils.http.response import make_response
 
 DYNAMODB_ITEMS_TABLE_NAME = os.getenv('DYNAMODB_ITEMS_TABLE_NAME')
@@ -10,15 +10,11 @@ def handler(event, context):
     print(f'DYNAMODB_ITEMS_TABLE_NAME: {DYNAMODB_ITEMS_TABLE_NAME}')
     print(f'event: {event}')
     try:
-        if event['queryStringParameters'] is not None:
-            request_query = event['queryStringParameters']
-            mangas = list_my_mangas(
-                DYNAMODB_ITEMS_TABLE_NAME, request_query['status'])
-        else:
-            mangas = list_my_mangas(DYNAMODB_ITEMS_TABLE_NAME, None)
-
+        request_path = event['pathParameters']
+        my_scores = list_my_scores(
+            DYNAMODB_ITEMS_TABLE_NAME, request_path['slug'])
         result = {
-            "mangas": mangas
+            "scores": my_scores
         }
         return make_response(context.aws_request_id, 0, 200, result)
     except Exception as error:

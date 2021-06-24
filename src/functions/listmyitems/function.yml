@@ -1,0 +1,8 @@
+listmyitems:
+  handler: src/functions/listmyitems/main.handler
+  events:
+    - http:
+        path: /mymangalist/user/items
+        method: get
+        cors: true
+        private: ${env:PRIVATE_ENDPOINT}
