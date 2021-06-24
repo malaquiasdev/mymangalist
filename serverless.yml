@@ -18,6 +18,19 @@ provider:
   region: us-east-1
   logRetentionInDays: 5
   deploymentBucket: my-serverless-bucket-deployment
+  apiGateway:
+    apiKeys:
+      - name: ${opt:stage}-malaquias
+        value: ${env:GATEWAY_X_API_KEY} # you can hide it in a serverless variable and must be unique
+        description: My personal api key
+    usagePlan:
+      # quota:
+        #limit: 5000
+        #offset: 2
+        #period: month
+      throttle:
+        rateLimit: 50
+        burstLimit: 100
   tags:
     project: ${self:service}
   iam:
