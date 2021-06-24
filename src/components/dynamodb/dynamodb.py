@@ -13,6 +13,7 @@ def create_new_item(table_name: str, slug: str, title: str, status: str, type: s
         'title': title,
         'status': status,
         'type': type,
+        'scores': []
     })
     return True
 

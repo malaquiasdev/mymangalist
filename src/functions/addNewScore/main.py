@@ -14,7 +14,10 @@ def handler(event, context):
         request_path = event['pathParameters']
         request_body = json.loads(event['body'])
         updated = add_new_score(DYNAMODB_ITEMS_TABLE_NAME,
-                                request_path['slug'], request_body['score'])
+                                request_path['slug'],
+                                request_body['chapter_number'],
+                                request_body['score'],
+                                )
         result = {
             "slug": request_path['slug'],
             "updated": updated
