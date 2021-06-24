@@ -9,6 +9,7 @@ plugins:
 custom:
   pythonRequirements: # DO NOT REMOVE THIS, THIS HELP US TO AVOID PYTHON VERSION ERRORS
     pythonBin: python3
+  dynamodbItemsTableName: ${self:service}_${self:provider.stage}_items
 
 provider:
   name: aws
@@ -43,7 +44,7 @@ provider:
             - dynamodb:*
           Resource: "*"
   environment:
-    DYNAMODB_MANGAS_TABLE_NAME: ${self:service}_${self:provider.stage}_mangas
+    DYNAMODB_ITEMS_TABLE_NAME: ${self:custom.dynamodbItemsTableName}
 
 package:
   individually: true
@@ -56,3 +57,4 @@ functions:
 
 resources:
   - ${file(resources/api-gateway.yml)}
+  - ${file(resources/dynamodb-items-table.yml)}

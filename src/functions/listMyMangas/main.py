@@ -3,18 +3,19 @@ import os
 from src.functions.listMyMangas.service import list_my_mangas
 from src.utils.http.response import make_response
 
-DYNAMODB_MANGAS_TABLE_NAME = os.getenv('DYNAMODB_MANGAS_TABLE_NAME')
+DYNAMODB_ITEMS_TABLE_NAME = os.getenv('DYNAMODB_ITEMS_TABLE_NAME')
 
 
 def handler(event, context):
-    print(f'DYNAMODB_MANGAS_TABLE_NAME: {DYNAMODB_MANGAS_TABLE_NAME}')
+    print(f'DYNAMODB_ITEMS_TABLE_NAME: {DYNAMODB_ITEMS_TABLE_NAME}')
     print(f'event: {event}')
     try:
         if event['queryStringParameters'] is not None:
             request_query = event['queryStringParameters']
-            mangas = list_my_mangas(DYNAMODB_MANGAS_TABLE_NAME, request_query['status'])
+            mangas = list_my_mangas(
+                DYNAMODB_ITEMS_TABLE_NAME, request_query['status'])
         else:
-            mangas = list_my_mangas(DYNAMODB_MANGAS_TABLE_NAME, None)
+            mangas = list_my_mangas(DYNAMODB_ITEMS_TABLE_NAME, None)
 
         result = {
             "mangas": mangas
