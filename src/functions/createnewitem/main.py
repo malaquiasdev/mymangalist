@@ -1,7 +1,7 @@
 import json
 import os
 
-from src.functions.createNewItemInMyList.service import create_new_item_if_not_exist_in_my_list
+from src.functions.createnewitem.service import create_new_item_if_not_exist_in_my_list
 from src.utils.http.response import make_response
 
 DYNAMODB_ITEMS_TABLE_NAME = os.getenv('DYNAMODB_ITEMS_TABLE_NAME')

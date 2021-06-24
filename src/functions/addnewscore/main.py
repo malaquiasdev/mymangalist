@@ -1,7 +1,7 @@
 import os
 import json
 
-from src.functions.addNewScore.service import add_new_score
+from src.functions.addnewscore.service import add_new_score
 from src.utils.http.response import make_response
 
 DYNAMODB_ITEMS_TABLE_NAME = os.getenv('DYNAMODB_ITEMS_TABLE_NAME')

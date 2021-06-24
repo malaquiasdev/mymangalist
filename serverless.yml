@@ -50,10 +50,10 @@ package:
   individually: true
 
 functions:
-  - ${file(src/functions/createNewItemInMyList/function.yml)}
+  - ${file(src/functions/createnewitem/function.yml)}
   - ${file(src/functions/listmyitems/function.yml)}
   - ${file(src/functions/listmyscores/function.yml)}
-  - ${file(src/functions/addNewScore/function.yml)}
+  - ${file(src/functions/addnewscore/function.yml)}
 
 resources:
   - ${file(resources/api-gateway.yml)}

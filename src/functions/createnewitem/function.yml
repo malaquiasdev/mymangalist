@@ -1,5 +1,5 @@
-createNewItemInMyList:
-  handler: src/functions/createNewItemInMyList/main.handler
+createnewitem:
+  handler: src/functions/createnewitem/main.handler
   events:
     - http:
         path: /mymangalist/user/items
@@ -8,4 +8,4 @@ createNewItemInMyList:
         private: ${env:PRIVATE_ENDPOINT}
         request:
           schemas:
-            application/json: ${file(src/functions/createNewItemInMyList/create_request.json)}
+            application/json: ${file(src/functions/createnewitem/create_request.json)}
