@@ -1,7 +1,7 @@
 import json
 import os
 
-from src.functions.createNewManga.service import create_new_manga_if_not_exist_in_my_list
+from src.functions.createNewItemInMyList.service import create_new_manga_if_not_exist_in_my_list
 from src.utils.http.response import make_response
 
 DYNAMODB_MANGAS_TABLE_NAME = os.getenv('DYNAMODB_MANGAS_TABLE_NAME')

@@ -20,7 +20,7 @@ provider:
   deploymentBucket: my-serverless-bucket-deployment
   apiGateway:
     apiKeys:
-      - name: ${opt:stage}-malaquias
+      - name: ${self:provider.stage}-malaquias
         value: ${env:GATEWAY_X_API_KEY} # you can hide it in a serverless variable and must be unique
         description: My personal api key
     usagePlan:
@@ -49,7 +49,7 @@ package:
   individually: true
 
 functions:
-  - ${file(src/functions/createNewManga/function.yml)}
+  - ${file(src/functions/createNewItemInMyList/function.yml)}
   - ${file(src/functions/listMyMangas/function.yml)}
   - ${file(src/functions/listMyMangasScores/function.yml)}
   - ${file(src/functions/addNewScore/function.yml)}

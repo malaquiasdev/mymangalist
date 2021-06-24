@@ -1,0 +1,11 @@
+createNewItemInMyList:
+  handler: src/functions/createNewItemInMyList/main.handler
+  events:
+    - http:
+        path: /mymangalist/user/items
+        method: post
+        cors: true
+        private: ${env:PRIVATE_ENDPOINT}
+        request:
+          schemas:
+            application/json: ${file(src/functions/createNewItemInMyList/create_request.json)}
