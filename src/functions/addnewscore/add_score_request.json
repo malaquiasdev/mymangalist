@@ -1,0 +1,12 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "addNewScoreModel",
+  "required": ["chapter_number", "score"],
+  "additionalProperties": false,
+  "properties": {
+    "chapter_number": { "type": "number", "minimum": 0 },
+    "score": { "type": "number",  "minimum": 0, "maximum": 10 }
+  }
+}

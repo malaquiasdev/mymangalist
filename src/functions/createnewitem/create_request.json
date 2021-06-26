@@ -1,0 +1,27 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "createNewItemModel",
+  "required": ["slug", "title", "status", "type"],
+  "additionalProperties": false,
+  "properties": {
+    "slug": {
+        "type": "string",
+        "pattern": "^[a-zA-Z0-9]+$",
+        "minLength": 5,
+        "maxLength": 50
+    },
+    "title": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["IN_PROGRESS", "COMPLETED", "ON_HOLD", "DROPPED", "PLAN_TO_READ"]
+    },
+    "type": {
+      "type": "string",
+      "enum": ["MANGA", "COMIC_BOOK", "ANIME", "SERIE"]
+    }
+  }
+}

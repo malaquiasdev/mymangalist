@@ -1,0 +1,11 @@
+addnewscore:
+  handler: src/functions/addnewscore/main.handler
+  events:
+    - http:
+        path: /mymangalist/user/items/{slug}/scores
+        method: patch
+        cors: true
+        private: ${env:PRIVATE_ENDPOINT}
+        request:
+          schemas:
+            application/json: ${file(src/functions/addnewscore/add_score_request.json)}

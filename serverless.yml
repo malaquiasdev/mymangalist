@@ -9,6 +9,7 @@ plugins:
 custom:
   pythonRequirements: # DO NOT REMOVE THIS, THIS HELP US TO AVOID PYTHON VERSION ERRORS
     pythonBin: python3
+  dynamodbItemsTableName: ${self:service}_${self:provider.stage}_items
 
 provider:
   name: aws
@@ -18,6 +19,19 @@ provider:
   region: us-east-1
   logRetentionInDays: 5
   deploymentBucket: my-serverless-bucket-deployment
+  apiGateway:
+    apiKeys:
+      - name: ${self:provider.stage}-malaquias
+        value: ${env:GATEWAY_X_API_KEY} # you can hide it in a serverless variable and must be unique
+        description: My personal api key
+    usagePlan:
+      # quota:
+        #limit: 5000
+        #offset: 2
+        #period: month
+      throttle:
+        rateLimit: 50
+        burstLimit: 100
   tags:
     project: ${self:service}
   iam:
@@ -30,16 +44,17 @@ provider:
             - dynamodb:*
           Resource: "*"
   environment:
-    DYNAMODB_MANGAS_TABLE_NAME: ${self:service}_${self:provider.stage}_mangas
+    DYNAMODB_ITEMS_TABLE_NAME: ${self:custom.dynamodbItemsTableName}
 
 package:
   individually: true
 
 functions:
-  - ${file(src/functions/createNewManga/function.yml)}
-  - ${file(src/functions/listMyMangas/function.yml)}
-  - ${file(src/functions/listMyMangasScores/function.yml)}
-  - ${file(src/functions/addNewScore/function.yml)}
+  - ${file(src/functions/createnewitem/function.yml)}
+  - ${file(src/functions/listmyitems/function.yml)}
+  - ${file(src/functions/listmyscores/function.yml)}
+  - ${file(src/functions/addnewscore/function.yml)}
 
 resources:
   - ${file(resources/api-gateway.yml)}
+  - ${file(resources/dynamodb-items-table.yml)}
