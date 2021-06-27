@@ -4,10 +4,14 @@ branches:
     - master
 node_js:
   - "12"
+install:
+  - npm install -g serverless
+  - npm install -g yarn
+  - yarn install
 script:
-  - echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
-  - npm install
-  - AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY S3_BUCKET_NAME=$S3_BUCKET_NAME sls deploy --stage prd
+  - yarn run lint
+  - yarn run test:coveralls
+  - AWS_ACCESS_KEY_ID=$aws_access_key_id AWS_SECRET_ACCESS_KEY=$aws_secret_access_key sls deploy --stage prd
 cache:
   directories:
     - node_modules
