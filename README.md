@@ -59,6 +59,8 @@ Before you begin, ensure you have met the following requirements:
 
 ### Services diagram
 
+![MyMangaList diagram](./my_manga_list_siri.png)
+
 ## 🧐 What's inside?
 
 ## 🎉 Contributors
