@@ -5,7 +5,7 @@ createnewitem:
         path: /mymangalist/user/items
         method: post
         cors: true
-        private: ${env:PRIVATE_ENDPOINT}
+        private: ${env:PRIVATE_ENDPOINT, false}
         request:
           schemas:
             application/json: ${file(src/functions/createnewitem/create_request.json)}

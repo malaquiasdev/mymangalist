@@ -3,15 +3,9 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "title": "createNewItemModel",
-  "required": ["slug", "title", "status", "type"],
+  "required": ["title", "status", "type"],
   "additionalProperties": false,
   "properties": {
-    "slug": {
-        "type": "string",
-        "pattern": "^[a-zA-Z0-9]+$",
-        "minLength": 2,
-        "maxLength": 50
-    },
     "title": {
       "type": "string"
     },

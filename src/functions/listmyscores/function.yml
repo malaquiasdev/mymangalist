@@ -5,4 +5,4 @@ listmyscores:
         path: /mymangalist/user/items/{slug}/scores
         method: get
         cors: true
-        private: ${env:PRIVATE_ENDPOINT}
+        private: ${env:PRIVATE_ENDPOINT, false}
