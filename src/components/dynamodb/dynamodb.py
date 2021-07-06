@@ -6,10 +6,10 @@ from botocore.exceptions import ClientError
 dynamodb = boto3.resource('dynamodb')
 
 
-def create_new_item(table_name: str, slug: str, title: str, status: str, type: str) -> bool:
+def create_new_item(table_name: str, uuid: str, title: str, status: str, type: str) -> bool:
     table = dynamodb.Table(table_name)
     table.put_item(Item={
-        'slug': slug,
+        'uuid': uuid,
         'title': title,
         'status': status,
         'type': type,
