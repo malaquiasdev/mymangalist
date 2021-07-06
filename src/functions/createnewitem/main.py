@@ -13,9 +13,9 @@ def handler(event, context):
     request_body = json.loads(event['body'])
 
     try:
-        create_new_item_if_not_exist_in_my_list(DYNAMODB_ITEMS_TABLE_NAME, request_body.get('slug'),
-                                                request_body.get(
-                                                    'title'), request_body.get('status'),
+        create_new_item_if_not_exist_in_my_list(DYNAMODB_ITEMS_TABLE_NAME,
+                                                request_body.get('title'),
+                                                request_body.get('status'),
                                                 request_body.get('type'))
     except ValueError as error:
         return make_response(context.aws_request_id, 0, 409, None, "CONFLICT_ERROR", str(error))
