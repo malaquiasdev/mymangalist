@@ -19,7 +19,7 @@ def handler(event, context):
                                 request_body['score'],
                                 )
         result = {
-            "slug": request_path['slug'],
+            "uuid": request_path['uuid'],
             "updated": updated
         }
         return make_response(context.aws_request_id, 0, 200, result)
