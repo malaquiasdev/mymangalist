@@ -12,7 +12,7 @@ def handler(event, context):
     try:
         request_path = event['pathParameters']
         my_scores = list_my_scores(
-            DYNAMODB_ITEMS_TABLE_NAME, request_path['slug'])
+            DYNAMODB_ITEMS_TABLE_NAME, request_path['uuid'])
         result = {
             "scores": my_scores
         }
