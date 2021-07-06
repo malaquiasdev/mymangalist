@@ -21,8 +21,8 @@ def _add_new_score(item: list, chapter_number: int, new_score: int) -> list:
     return item
 
 
-def add_new_score(table_name: str, slug: str, chapter_number: int, new_score: int):
-    item = dynamodb.find_item_by_slug(table_name, slug)
+def add_new_score(table_name: str, uuid: str, chapter_number: int, new_score: int):
+    item = dynamodb.find_item_by_uuid(table_name, uuid)
 
     if not item:
         return False

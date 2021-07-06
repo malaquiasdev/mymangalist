@@ -5,14 +5,14 @@ Resources:
       BillingMode: PAY_PER_REQUEST
       TableName: ${self:custom.dynamodbItemsTableName}
       AttributeDefinitions:
-        - AttributeName: slug
+        - AttributeName: uuid
           AttributeType: S
         - AttributeName: status
           AttributeType: S
         - AttributeName: type
           AttributeType: S
       KeySchema:
-        - AttributeName: slug
+        - AttributeName: uuid
           KeyType: HASH
       ProvisionedThroughput:
         ReadCapacityUnits: 0
