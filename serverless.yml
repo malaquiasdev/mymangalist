@@ -54,6 +54,7 @@ functions:
   - ${file(src/functions/listmyitems/function.yml)}
   - ${file(src/functions/listmyscores/function.yml)}
   - ${file(src/functions/addnewscore/function.yml)}
+  - ${file(src/functions/updateitemstatus/function.yml)}
 
 resources:
   - ${file(resources/api-gateway.yml)}

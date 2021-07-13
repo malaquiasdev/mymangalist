@@ -1,0 +1,14 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "updateStatusModel",
+  "required": ["status"],
+  "additionalProperties": false,
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["IN_PROGRESS", "COMPLETED", "ON_HOLD", "DROPPED", "PLAN_TO_READ"]
+    }
+  }
+}
