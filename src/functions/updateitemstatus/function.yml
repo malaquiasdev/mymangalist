@@ -1,0 +1,11 @@
+updateitemstatus:
+  handler: src/functions/updateitemstatus/main.handler
+  events:
+    - http:
+        path: /mymangalist/user/items/{uuid}/status
+        method: patch
+        cors: true
+        private: ${env:PRIVATE_ENDPOINT, false}
+        request:
+          schemas:
+            application/json: ${file(src/functions/updateitemstatus/update_status_request.json)}
