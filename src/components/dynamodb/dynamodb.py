@@ -37,7 +37,7 @@ def find_items_by_status_and_type(table_name: str, status: str, type: str) -> ty
     try:
         response = table.scan(FilterExpression=Attr(
             'status').contains(status) &
-            Attr('type').contains(type))
+                                               Attr('type').contains(type))
     except ClientError as error:
         print(error)
         raise
@@ -50,7 +50,19 @@ def find_items_by_title_and_type(table_name: str, title: str, type: str) -> typi
     try:
         response = table.scan(FilterExpression=Attr(
             'title').eq(title) &
-            Attr('type').contains(type))
+                                               Attr('type').contains(type))
+    except ClientError as error:
+        print(error)
+        raise
+    else:
+        return response['Items']
+
+
+def find_items_by_title(table_name: str, title: str) -> typing.List[any]:
+    table = dynamodb.Table(table_name)
+    try:
+        print(f'title: {title}')
+        response = table.scan(FilterExpression=Attr('title').contains(title))
     except ClientError as error:
         print(error)
         raise
